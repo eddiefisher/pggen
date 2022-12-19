@@ -4,11 +4,12 @@ package gomod
 
 import (
 	"fmt"
-	"github.com/jschaf/pggen/internal/paths"
-	"golang.org/x/mod/modfile"
 	"os"
 	"path/filepath"
 	"sync"
+
+	"github.com/eddiefisher/pggen/internal/paths"
+	"golang.org/x/mod/modfile"
 )
 
 var (

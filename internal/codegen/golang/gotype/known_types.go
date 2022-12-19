@@ -1,9 +1,9 @@
 package gotype
 
 import (
+	"github.com/eddiefisher/pggen/internal/pg"
+	"github.com/eddiefisher/pggen/internal/pg/pgoid"
 	"github.com/jackc/pgtype"
-	"github.com/jschaf/pggen/internal/pg"
-	"github.com/jschaf/pggen/internal/pg/pgoid"
 )
 
 // FindKnownTypePgx returns the native pgx type, like pgtype.Text, if known, for
@@ -45,6 +45,7 @@ func FindKnownTypeNonNullable(oid pgtype.OID) (Type, bool) {
 }
 
 // Native go types are not prefixed.
+//
 //goland:noinspection GoUnusedGlobalVariable
 var (
 	Bool          = MustParseKnownType("bool", pg.Bool)

@@ -2,14 +2,15 @@ package parser
 
 import (
 	"fmt"
-	"github.com/jschaf/pggen/internal/ast"
-	"github.com/jschaf/pggen/internal/scanner"
-	"github.com/jschaf/pggen/internal/token"
 	goscan "go/scanner"
 	gotok "go/token"
 	"regexp"
 	"strconv"
 	"strings"
+
+	"github.com/eddiefisher/pggen/internal/ast"
+	"github.com/eddiefisher/pggen/internal/scanner"
+	"github.com/eddiefisher/pggen/internal/token"
 )
 
 type parser struct {

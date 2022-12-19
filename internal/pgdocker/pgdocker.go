@@ -7,15 +7,6 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/docker/docker/api/types"
-	"github.com/docker/docker/api/types/container"
-	dockerClient "github.com/docker/docker/client"
-	"github.com/docker/go-connections/nat"
-	"github.com/jackc/pgx/v4"
-	"github.com/jschaf/pggen/internal/errs"
-	"github.com/jschaf/pggen/internal/ports"
-	"go.uber.org/multierr"
-	"go.uber.org/zap"
 	"io"
 	"os"
 	"path/filepath"
@@ -23,6 +14,16 @@ import (
 	"strconv"
 	"text/template"
 	"time"
+
+	"github.com/docker/docker/api/types"
+	"github.com/docker/docker/api/types/container"
+	dockerClient "github.com/docker/docker/client"
+	"github.com/docker/go-connections/nat"
+	"github.com/eddiefisher/pggen/internal/errs"
+	"github.com/eddiefisher/pggen/internal/ports"
+	"github.com/jackc/pgx/v5"
+	"go.uber.org/multierr"
+	"go.uber.org/zap"
 )
 
 // Client is a client to control the running Postgres Docker container.

@@ -2,10 +2,11 @@ package syntax
 
 import (
 	"context"
-	"github.com/jackc/pgx/v4"
-	"github.com/jschaf/pggen/internal/pgtest"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/eddiefisher/pggen/internal/pgtest"
+	"github.com/jackc/pgx/v5"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestQuerier(t *testing.T) {

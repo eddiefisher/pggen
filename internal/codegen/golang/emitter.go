@@ -2,11 +2,12 @@ package golang
 
 import (
 	"fmt"
-	"github.com/jschaf/pggen/internal/errs"
 	"os"
 	"path/filepath"
 	"strconv"
 	"text/template"
+
+	"github.com/eddiefisher/pggen/internal/errs"
 )
 
 // Emitter writes a templated query file to a file.

@@ -3,16 +3,17 @@ package pginfer
 import (
 	"context"
 	"errors"
+	"testing"
+
+	"github.com/eddiefisher/pggen/internal/ast"
+	"github.com/eddiefisher/pggen/internal/difftest"
+	"github.com/eddiefisher/pggen/internal/pg"
+	"github.com/eddiefisher/pggen/internal/pgtest"
+	"github.com/eddiefisher/pggen/internal/texts"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
-	"github.com/jschaf/pggen/internal/ast"
-	"github.com/jschaf/pggen/internal/difftest"
-	"github.com/jschaf/pggen/internal/pg"
-	"github.com/jschaf/pggen/internal/pgtest"
-	"github.com/jschaf/pggen/internal/texts"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestInferrer_InferTypes(t *testing.T) {

@@ -5,10 +5,11 @@ package scanner
 import (
 	"bytes"
 	"fmt"
-	"github.com/jschaf/pggen/internal/token"
 	gotok "go/token"
 	"unicode"
 	"unicode/utf8"
+
+	"github.com/eddiefisher/pggen/internal/token"
 )
 
 const (

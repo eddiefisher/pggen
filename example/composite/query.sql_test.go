@@ -2,15 +2,16 @@ package composite
 
 import (
 	"context"
+	"testing"
+
+	"github.com/eddiefisher/pggen/internal/difftest"
+	"github.com/eddiefisher/pggen/internal/errs"
+	"github.com/eddiefisher/pggen/internal/pgtest"
+	"github.com/eddiefisher/pggen/internal/ptrs"
 	"github.com/jackc/pgtype"
-	"github.com/jackc/pgx/v4"
-	"github.com/jschaf/pggen/internal/difftest"
-	"github.com/jschaf/pggen/internal/errs"
-	"github.com/jschaf/pggen/internal/pgtest"
-	"github.com/jschaf/pggen/internal/ptrs"
+	"github.com/jackc/pgx/v5"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestNewQuerier_SearchScreenshots(t *testing.T) {

@@ -8,7 +8,7 @@ on:
     types: [completed]
 jobs:
   release:
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.ref == 'refs/heads/main' && github.repository_owner == 'jschaf' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.ref == 'refs/heads/main' && github.repository_owner == 'eddiefisher' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

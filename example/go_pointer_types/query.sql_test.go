@@ -2,12 +2,13 @@ package go_pointer_types
 
 import (
 	"context"
-	"github.com/jackc/pgx/v4"
-	"github.com/jschaf/pggen/internal/errs"
-	"github.com/jschaf/pggen/internal/pgtest"
+	"testing"
+
+	"github.com/eddiefisher/pggen/internal/errs"
+	"github.com/eddiefisher/pggen/internal/pgtest"
+	"github.com/jackc/pgx/v5"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestQuerier_GenSeries1(t *testing.T) {

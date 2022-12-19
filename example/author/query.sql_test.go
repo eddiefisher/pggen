@@ -3,13 +3,14 @@ package author
 import (
 	"context"
 	"errors"
-	"github.com/jschaf/pggen/internal/errs"
-	"github.com/jschaf/pggen/internal/ptrs"
-	"github.com/stretchr/testify/require"
 	"testing"
 
-	"github.com/jackc/pgx/v4"
-	"github.com/jschaf/pggen/internal/pgtest"
+	"github.com/eddiefisher/pggen/internal/errs"
+	"github.com/eddiefisher/pggen/internal/ptrs"
+	"github.com/stretchr/testify/require"
+
+	"github.com/eddiefisher/pggen/internal/pgtest"
+	"github.com/jackc/pgx/v5"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -111,8 +112,7 @@ func TestNewQuerier_FindAuthors(t *testing.T) {
 }
 
 func TestNewQuerier_FindAuthors_PrepareAllQueries(t *testing.T) {
-	conn, cleanup := pgtest.NewPostgresSchema(t, []string{"schema.sql"},
-		pgtest.WithGuardedStmtCache(findAuthorsSQL))
+	conn, cleanup := pgtest.NewPostgresSchema(t, []string{"schema.sql"})
 	defer cleanup()
 	q := NewQuerier(conn)
 	adamsID := insertAuthor(t, q, "john", "adams")
@@ -199,7 +199,7 @@ func TestNewQuerier_InsertAuthorSuffix(t *testing.T) {
 			AuthorID:  author.AuthorID,
 			FirstName: "ulysses",
 			LastName:  "grant",
-			Suffix:    &empty, // TODO: should be nil, https://github.com/jschaf/pggen/issues/21
+			Suffix:    &empty, // TODO: should be nil, https://github.com/eddiefisher/pggen/issues/21
 		}
 		assert.Equal(t, want, author)
 	})

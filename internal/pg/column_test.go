@@ -2,14 +2,15 @@ package pg
 
 import (
 	"context"
-	"github.com/google/go-cmp/cmp"
-	"github.com/jackc/pgtype"
-	"github.com/jackc/pgx/v4"
-	"github.com/jschaf/pggen/internal/pgtest"
-	"github.com/jschaf/pggen/internal/texts"
-	"github.com/stretchr/testify/assert"
 	"testing"
 	"time"
+
+	"github.com/eddiefisher/pggen/internal/pgtest"
+	"github.com/eddiefisher/pggen/internal/texts"
+	"github.com/google/go-cmp/cmp"
+	"github.com/jackc/pgtype"
+	"github.com/jackc/pgx/v5"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestFetchColumns(t *testing.T) {

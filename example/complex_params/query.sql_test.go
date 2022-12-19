@@ -2,11 +2,12 @@ package complex_params
 
 import (
 	"context"
-	"github.com/jackc/pgx/v4"
-	"github.com/jschaf/pggen/internal/pgtest"
+	"testing"
+
+	"github.com/eddiefisher/pggen/internal/pgtest"
+	"github.com/jackc/pgx/v5"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestNewQuerier_ParamArrayInt(t *testing.T) {

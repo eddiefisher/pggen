@@ -5,10 +5,10 @@ package custom_types
 import (
 	"context"
 	"fmt"
-	"github.com/jackc/pgconn"
+	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgtype"
-	"github.com/jackc/pgx/v4"
-	"github.com/jschaf/pggen/example/custom_types/mytype"
+	"github.com/jackc/pgx/v5"
+	"github.com/eddiefisher/pggen/example/custom_types/mytype"
 )
 
 // Querier is a typesafe Go interface backed by SQL queries.
@@ -62,7 +62,7 @@ type genericConn interface {
 	// Exec executes sql. sql can be either a prepared statement name or an SQL
 	// string. arguments should be referenced positionally from the sql string
 	// as $1, $2, etc.
-	Exec(ctx context.Context, sql string, arguments ...interface{}) (pgconn.CommandTag, error)
+	Exec(ctx context.Context, sql string, arguments ...any) (pgconn.CommandTag, error)
 }
 
 // genericBatch batches queries to send in a single network request to a
@@ -70,7 +70,7 @@ type genericConn interface {
 type genericBatch interface {
 	// Queue queues a query to batch b. query can be an SQL query or the name of a
 	// prepared statement. See Queue on *pgx.Batch.
-	Queue(query string, arguments ...interface{})
+	Queue(query string, arguments ...any) *pgx.QueuedQuery
 }
 
 // NewQuerier creates a DBQuerier that implements Querier. conn is typically

@@ -5,9 +5,9 @@ package enums
 import (
 	"context"
 	"fmt"
-	"github.com/jackc/pgconn"
+	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgtype"
-	"github.com/jackc/pgx/v4"
+	"github.com/jackc/pgx/v5"
 )
 
 // Querier is a typesafe Go interface backed by SQL queries.
@@ -54,7 +54,7 @@ type Querier interface {
 	// FindManyDeviceArrayWithNumScan scans the result of an executed FindManyDeviceArrayWithNumBatch query.
 	FindManyDeviceArrayWithNumScan(results pgx.BatchResults) ([]FindManyDeviceArrayWithNumRow, error)
 
-	// Regression test for https://github.com/jschaf/pggen/issues/23.
+	// Regression test for https://github.com/eddiefisher/pggen/issues/23.
 	EnumInsideComposite(ctx context.Context) (Device, error)
 	// EnumInsideCompositeBatch enqueues a EnumInsideComposite query into batch to be executed
 	// later by the batch.
@@ -86,7 +86,7 @@ type genericConn interface {
 	// Exec executes sql. sql can be either a prepared statement name or an SQL
 	// string. arguments should be referenced positionally from the sql string
 	// as $1, $2, etc.
-	Exec(ctx context.Context, sql string, arguments ...interface{}) (pgconn.CommandTag, error)
+	Exec(ctx context.Context, sql string, arguments ...any) (pgconn.CommandTag, error)
 }
 
 // genericBatch batches queries to send in a single network request to a
@@ -94,7 +94,7 @@ type genericConn interface {
 type genericBatch interface {
 	// Queue queues a query to batch b. query can be an SQL query or the name of a
 	// prepared statement. See Queue on *pgx.Batch.
-	Queue(query string, arguments ...interface{})
+	Queue(query string, arguments ...any) *pgx.QueuedQuery
 }
 
 // NewQuerier creates a DBQuerier that implements Querier. conn is typically

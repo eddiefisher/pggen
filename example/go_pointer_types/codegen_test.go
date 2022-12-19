@@ -1,12 +1,13 @@
 package go_pointer_types
 
 import (
-	"github.com/jschaf/pggen"
-	"github.com/jschaf/pggen/internal/pgtest"
-	"github.com/stretchr/testify/assert"
 	"os"
 	"path/filepath"
 	"testing"
+
+	"github.com/eddiefisher/pggen"
+	"github.com/eddiefisher/pggen/internal/pgtest"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestGenerate_Go_Example_GoPointerTypes(t *testing.T) {

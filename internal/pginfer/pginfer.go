@@ -3,16 +3,16 @@ package pginfer
 import (
 	"context"
 	"fmt"
-	"github.com/jackc/pgconn"
 	"strings"
 	"time"
 
-	"github.com/jackc/pgproto3/v2"
+	"github.com/jackc/pgx/v5/pgconn"
+
+	"github.com/eddiefisher/pggen/internal/ast"
+	"github.com/eddiefisher/pggen/internal/errs"
+	"github.com/eddiefisher/pggen/internal/pg"
 	"github.com/jackc/pgtype"
-	"github.com/jackc/pgx/v4"
-	"github.com/jschaf/pggen/internal/ast"
-	"github.com/jschaf/pggen/internal/errs"
-	"github.com/jschaf/pggen/internal/pg"
+	"github.com/jackc/pgx/v5"
 )
 
 const defaultTimeout = 3 * time.Second
@@ -178,7 +178,7 @@ func (inf *Inferrer) inferOutputTypes(query *ast.SourceQuery) ([]OutputColumn, e
 	if err != nil {
 		return nil, fmt.Errorf("execute output query: %w", err)
 	}
-	descriptions := make([]pgproto3.FieldDescription, len(rows.FieldDescriptions()))
+	descriptions := make([]pgconn.FieldDescription, len(rows.FieldDescriptions()))
 	copy(descriptions, rows.FieldDescriptions()) // pgx reuses row objects
 	rows.Close()
 	// We can ignore the error if we got the field descriptions. Most queries
@@ -254,7 +254,7 @@ func (inf *Inferrer) inferOutputTypes(query *ast.SourceQuery) ([]OutputColumn, e
 
 // inferOutputNullability infers which of the output columns produced by the
 // query and described by descs can be null.
-func (inf *Inferrer) inferOutputNullability(query *ast.SourceQuery, descs []pgproto3.FieldDescription) ([]bool, error) {
+func (inf *Inferrer) inferOutputNullability(query *ast.SourceQuery, descs []pgconn.FieldDescription) ([]bool, error) {
 	if len(descs) == 0 {
 		return nil, nil
 	}

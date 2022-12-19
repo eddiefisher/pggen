@@ -2,13 +2,14 @@ package order
 
 import (
 	"context"
-	"github.com/jackc/pgtype"
-	"github.com/jschaf/pggen/internal/pgtest"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"math/big"
 	"testing"
 	"time"
+
+	"github.com/eddiefisher/pggen/internal/pgtest"
+	"github.com/jackc/pgtype"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestNewQuerier_FindOrdersByCustomer(t *testing.T) {
@@ -51,8 +52,7 @@ func TestNewQuerier_FindOrdersByCustomer(t *testing.T) {
 }
 
 func TestNewQuerier_FindOrdersByCustomer_PrepareAllQueries(t *testing.T) {
-	conn, cleanup := pgtest.NewPostgresSchema(t, []string{"../01_schema.sql", "../02_schema.sql"},
-		pgtest.WithGuardedStmtCache(insertOrderSQL, insertCustomerSQL))
+	conn, cleanup := pgtest.NewPostgresSchema(t, []string{"../01_schema.sql", "../02_schema.sql"})
 	defer cleanup()
 	ctx := context.Background()
 	q := NewQuerier(conn)

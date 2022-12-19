@@ -2,13 +2,14 @@ package custom_types
 
 import (
 	"context"
+	"testing"
+
+	"github.com/eddiefisher/pggen/internal/pgtest"
+	"github.com/eddiefisher/pggen/internal/texts"
 	"github.com/jackc/pgtype"
-	"github.com/jackc/pgx/v4"
-	"github.com/jschaf/pggen/internal/pgtest"
-	"github.com/jschaf/pggen/internal/texts"
+	"github.com/jackc/pgx/v5"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestQuerier_CustomTypes(t *testing.T) {
@@ -57,11 +58,11 @@ func TestQuerier_CustomMyInt(t *testing.T) {
 	require.NoError(t, err)
 	t.Logf("my_int oid: %d", oidVal.Uint)
 
-	conn.ConnInfo().RegisterDataType(pgtype.DataType{
-		Value: &pgtype.Int2{},
-		Name:  "my_int",
-		OID:   oidVal.Uint,
-	})
+	// conn.ConnInfo().RegisterDataType(pgtype.DataType{
+	// 	Value: &pgtype.Int2{},
+	// 	Name:  "my_int",
+	// 	OID:   oidVal.Uint,
+	// })
 
 	q := NewQuerier(conn)
 	ctx := context.Background()

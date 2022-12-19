@@ -42,7 +42,7 @@ git push origin "$day"
 # Delete any existing releases. We only support 1 release per day.
 # Ignore errors if we try to delete a release that doesn't exist.
 echo 'deleting existing releases'
-"$githubRelease" delete --user jschaf --repo pggen --tag "$day" || true
+"$githubRelease" delete --user eddiefisher --repo pggen --tag "$day" || true
 
 echo
 echo "creating release $day"

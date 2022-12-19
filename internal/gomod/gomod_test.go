@@ -1,8 +1,9 @@
 package gomod
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestResolvePackage(t *testing.T) {
@@ -12,19 +13,19 @@ func TestResolvePackage(t *testing.T) {
 	}{
 		{
 			path: "Foo.go",
-			want: "github.com/jschaf/pggen/internal/gomod",
+			want: "github.com/eddiefisher/pggen/internal/gomod",
 		},
 		{
 			path: "../Foo.go",
-			want: "github.com/jschaf/pggen/internal",
+			want: "github.com/eddiefisher/pggen/internal",
 		},
 		{
 			path: "./Foo.go",
-			want: "github.com/jschaf/pggen/internal/gomod",
+			want: "github.com/eddiefisher/pggen/internal/gomod",
 		},
 		{
 			path: "blah/qux/Foo.go",
-			want: "github.com/jschaf/pggen/internal/gomod/blah/qux",
+			want: "github.com/eddiefisher/pggen/internal/gomod/blah/qux",
 		},
 	}
 	for _, tt := range tests {

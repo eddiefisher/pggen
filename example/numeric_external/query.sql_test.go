@@ -2,21 +2,23 @@ package numeric_external
 
 import (
 	"context"
+
+	"github.com/eddiefisher/pggen/internal/pgtest"
 	"github.com/google/go-cmp/cmp"
 	"github.com/jackc/pgtype"
-	"github.com/jschaf/pggen/internal/pgtest"
 	"github.com/shopspring/decimal"
 	"github.com/stretchr/testify/require"
 
-	shopspring "github.com/jackc/pgtype/ext/shopspring-numeric"
 	"testing"
+
+	shopspring "github.com/jackc/pgtype/ext/shopspring-numeric"
 )
 
 func TestNewQuerier_FindNumerics(t *testing.T) {
 	conn, cleanup := pgtest.NewPostgresSchema(t, []string{"schema.sql"})
 	defer cleanup()
 
-	conn.ConnInfo()
+	// conn.ConnInfo()
 	q := NewQuerierConfig(conn, QuerierConfig{
 		DataTypes: []pgtype.DataType{
 			{

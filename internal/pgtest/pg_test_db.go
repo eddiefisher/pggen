@@ -4,7 +4,7 @@ import (
 	"context"
 	crand "crypto/rand"
 	"encoding/binary"
-	"github.com/jackc/pgx/v4"
+	"github.com/jackc/pgx/v5"
 	"math/rand"
 	"os"
 	"strconv"
@@ -29,7 +29,7 @@ type Option func(config *pgx.ConnConfig)
 func NewPostgresSchemaString(t *testing.T, sql string, opts ...Option) (*pgx.Conn, CleanupFunc) {
 	t.Helper()
 	// Create a new schema.
-	connStr := "user=postgres password=hunter2 host=localhost port=5555 dbname=pggen"
+	connStr := "user=postgres password=hunter2 host=localhost port=6543 dbname=pggen"
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	conn, err := pgx.Connect(ctx, connStr)

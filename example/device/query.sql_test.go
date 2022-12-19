@@ -2,13 +2,14 @@ package device
 
 import (
 	"context"
-	"github.com/jackc/pgtype"
-	"github.com/jackc/pgx/v4"
-	"github.com/jschaf/pggen/internal/pgtest"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"net"
 	"testing"
+
+	"github.com/eddiefisher/pggen/internal/pgtest"
+	"github.com/jackc/pgtype"
+	"github.com/jackc/pgx/v5"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestQuerier_FindDevicesByUser(t *testing.T) {

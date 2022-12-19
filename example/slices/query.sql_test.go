@@ -2,13 +2,14 @@ package slices
 
 import (
 	"context"
-	"github.com/jackc/pgx/v4"
-	"github.com/jschaf/pggen/internal/difftest"
-	"github.com/jschaf/pggen/internal/errs"
-	"github.com/jschaf/pggen/internal/pgtest"
-	"github.com/stretchr/testify/require"
 	"testing"
 	"time"
+
+	"github.com/eddiefisher/pggen/internal/difftest"
+	"github.com/eddiefisher/pggen/internal/errs"
+	"github.com/eddiefisher/pggen/internal/pgtest"
+	"github.com/jackc/pgx/v5"
+	"github.com/stretchr/testify/require"
 )
 
 func TestNewQuerier_GetBools(t *testing.T) {

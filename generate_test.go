@@ -1,12 +1,13 @@
 package pggen
 
 import (
-	"github.com/jschaf/pggen/internal/pgtest"
-	"github.com/jschaf/pggen/internal/texts"
-	"github.com/stretchr/testify/assert"
 	"os"
 	"path/filepath"
 	"testing"
+
+	"github.com/eddiefisher/pggen/internal/pgtest"
+	"github.com/eddiefisher/pggen/internal/texts"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestGenerate_Golang_Error(t *testing.T) {

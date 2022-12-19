@@ -2,14 +2,15 @@ package golang
 
 import (
 	"flag"
-	"github.com/jschaf/pggen/internal/casing"
-	"github.com/jschaf/pggen/internal/codegen/golang/gotype"
-	"github.com/jschaf/pggen/internal/difftest"
-	"github.com/jschaf/pggen/internal/pg"
-	"github.com/stretchr/testify/require"
 	"os"
 	"strings"
 	"testing"
+
+	"github.com/eddiefisher/pggen/internal/casing"
+	"github.com/eddiefisher/pggen/internal/codegen/golang/gotype"
+	"github.com/eddiefisher/pggen/internal/difftest"
+	"github.com/eddiefisher/pggen/internal/pg"
+	"github.com/stretchr/testify/require"
 )
 
 var update = flag.Bool("update", false, "update integration tests if true")

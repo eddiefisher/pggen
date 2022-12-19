@@ -2,10 +2,11 @@ package golang
 
 import (
 	"fmt"
-	"github.com/jschaf/pggen/internal/ast"
-	"github.com/jschaf/pggen/internal/codegen/golang/gotype"
 	"strconv"
 	"strings"
+
+	"github.com/eddiefisher/pggen/internal/ast"
+	"github.com/eddiefisher/pggen/internal/codegen/golang/gotype"
 )
 
 // TemplatedPackage is all templated files in a pggen invocation. The templated
@@ -410,8 +411,8 @@ func (tq TemplatedQuery) EmitResultElem() (string, error) {
 // for :one queries or to append for :many queries. Useful for figuring out if
 // we need to use the address operator. Controls the string item and &item in:
 //
-//   items = append(items, item)
-//   items = append(items, &item)
+//	items = append(items, item)
+//	items = append(items, &item)
 func (tq TemplatedQuery) EmitResultExpr(name string) (string, error) {
 	switch tq.ResultKind {
 	case ast.ResultKindOne:

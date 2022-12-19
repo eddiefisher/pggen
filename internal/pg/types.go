@@ -1,9 +1,10 @@
 package pg
 
 import (
-	"github.com/jackc/pgtype"
-	"github.com/jschaf/pggen/internal/pg/pgoid"
 	"strconv"
+
+	"github.com/eddiefisher/pggen/internal/pg/pgoid"
+	"github.com/jackc/pgtype"
 )
 
 // Type is a Postgres type.
