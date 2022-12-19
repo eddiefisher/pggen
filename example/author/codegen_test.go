@@ -10,6 +10,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// t
 func TestGenerate_Go_Example_Author(t *testing.T) {
 	conn, cleanupFunc := pgtest.NewPostgresSchema(t, []string{"schema.sql"})
 	defer cleanupFunc()
